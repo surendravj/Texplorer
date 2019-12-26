@@ -1,0 +1,58 @@
+<%-include('layouts/navbar.ejs')-%>
+<div class="container text-center col-md-6 col-sm-12 text-center">
+    <ol class="breadcrumb lighten-4 text-center">
+        <li class="breadcrumb-item"><a href="/user/categeroy/Business">Business</a></li>
+        <li class="breadcrumb-item"><a href="/user/categeroy/Entertainment">Entertainment</a></li>
+        <li class="breadcrumb-item active"><a href="/user/categeroy/Health">Health</a></li>
+        <li class="breadcrumb-item active"><a href="/user/categeroy/Science">Science</a></li>
+        <li class="breadcrumb-item active"><a href="/user/categeroy/Sports">Sports</a></li>
+        <li class="breadcrumb-item"><a href="/user/categeroy/technology">Technology</a></li>
+        <li class="breadcrumb-item"><a href="/user">Headlines</a></li>
+    </ol>
+</div>
+<br>
+<div class="container">
+    <%newsData.articles.forEach(data=>{%>
+    <div class="row">
+
+        <!-- Grid column -->
+        <div class="col-lg-5">
+
+            <!-- Featured image -->
+            <div class=" rounded z-depth-1 mb-lg-0">
+                <img class="img-fluid" src="<%=data.urlToImage%>" alt="Sample image">
+            </div>
+
+        </div>
+        <div class="col-lg-7">
+            <!-- Post title -->
+            <h4 class="font-weight-bold mb-3"><strong><%=data.title%></strong></h4>
+            <!-- Excerpt -->
+            <p><%=data.description%></p>
+            <!-- Post data -->
+            <%if(data.author==null){%>
+            <p>by <a><strong>Unknown</strong></a></p>
+            <%}else{%>
+            <p>by <a><strong><%=data.author%></strong></a></p>
+            <%}%>
+            <!-- Read more button -->
+            
+            <a class="btn btn-success btn-md btn-rounded mx-0" style="cursor: pointer;" target="_blank" href="<%=data.url%>">Read
+            more</a>
+            <a class="btn btn-primary btn-md btn-rounded mx-0" style="cursor: pointer;" target="_blank"
+                href="<%=data.url%>">Save
+            </a>
+            <a class="btn btn-danger btn-md btn-rounded mx-0" style="cursor: pointer;" target="_blank"
+                href="<%=data.url%>">Debate
+            </a>
+
+        </div>
+        <!-- Grid column -->
+
+    </div>
+    <!-- Grid row -->
+
+    <hr class="my-5">
+    <%})%>
+</div>
+<%-include('layouts/footer.ejs')-%>

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>TeXplorer</title>
+</head>
+
+<body>
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+  <!-- Bootstrap core CSS -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Material Design Bootstrap -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.8.11/css/mdb.min.css" rel="stylesheet">
+
+  <nav class="navbar navbar-expand-lg navbar-dark primary-color">
+    <a class="navbar-brand" href="/" style="border: 2px solid #0005;padding: 8px 8px;">TeXplorer</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+      aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse my-2 my-lg-0 ml-auto" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link" href="#">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link disabled" href="#">Contact</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+  <%if(success!=''){%>
+  <div class="alert-success text-center" style="padding: 8px 8px;font-weight: 700;">
+    <%=success%>
+  </div>
+<%}%>
+<%if(error!=''){%>
+  <div class="alert-warning text-center" style="padding: 8px 8px;font-weight: 700;">
+    <%=error%>
+  </div>
+<%}%>
+  <div class="card col-md-6 col-sm-12" style="margin: 50px auto;">
+
+    <h5 class="card-header info-color white-text text-center py-4">
+      <strong>Sign in</strong>
+    </h5>
+
+    <!--Card content-->
+    <div class="card-body px-lg-5 pt-0">
+      <!-- Form -->
+      <form class="text-center" style="color: #757575;" action="/login" method="POST">
+
+        <!-- Email -->
+        <div class="md-form">
+          <input type="email" name="email" id="materialLoginFormEmail" class="form-control" required>
+          <label for="materialLoginFormEmail">E-mail</label>
+        </div>
+
+        <!-- Password -->
+        <div class="md-form">
+          <input type="password" name="password" id="materialLoginFormPassword" class="form-control" required>
+          <label for="materialLoginFormPassword">Password</label>
+        </div>
+        <!-- Sign in button -->
+        <button class="btn btn-outline-info btn-rounded btn-block my-4 waves-effect z-depth-0" type="submit">Sign
+          in</button>
+
+        <!-- Register -->
+        <p>Not a member?
+          <a href="/signup">Register</a>
+        </p>
+
+      </form>
+      <!-- Form -->
+
+    </div>
+
+  </div>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <!-- Bootstrap tooltips -->
+  <script type="text/javascript"
+    src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.4/umd/popper.min.js"></script>
+  <!-- Bootstrap core JavaScript-->
+  <script type="text/javascript"
+    src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
+  <!-- MDB core JavaScript -->
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.8.11/js/mdb.min.js"></script>
+</body>
+
+</html>
