@@ -7,7 +7,10 @@ const newsSchema = schema({
     },
     userNews: [
         {
-                      
+           urlToImage:{
+               type:String,
+               required
+           }          
         }
     ]
 })
