@@ -30,7 +30,7 @@ app.use(session({
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(flash());
-app.use(bodyparser.urlencoded({ extended: false }.));
+app.use(bodyparser.urlencoded({ extended: false }));
 
 app.set('view engine', 'ejs');
 

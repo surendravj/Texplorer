@@ -20,7 +20,7 @@
 
             <!-- Featured image -->
             <div class=" rounded z-depth-1 mb-lg-0">
-                <img class="img-fluid" src="<%=data.urlToImage%>" alt="Sample image">
+                <img class="img-fluid" src="<%=data.urlToImage%>" alt="No-Image">
             </div>
 
         </div>
@@ -36,16 +36,18 @@
             <p>by <a><strong><%=data.author%></strong></a></p>
             <%}%>
             <!-- Read more button -->
-            
-            <a class="btn btn-success btn-md btn-rounded mx-0" style="cursor: pointer;" target="_blank" href="<%=data.url%>">Read
-            more</a>
-            <a class="btn btn-primary btn-md btn-rounded mx-0" style="cursor: pointer;" target="_blank"
-                href="<%=data.url%>">Save
+            <form method="POST" action="/user/save" style="float: inline;">
+                <input type="hidden" value="<%=data.urlToImage%>" name="urlToImage">
+            <input type="hidden" value="<%=data.url%>" name="url">
+            <input type="hidden" value="<%=data.author%>" name="author">
+            <input type="hidden" value="<%=data.title%>" name="title">
+            <input type="hidden" value="<%=data.description%>" name="description">
+            <a class="btn btn-success btn-md btn-rounded mx-0" style="cursor: pointer;" target="_blank"
+                href="<%=data.url%>">Read
+                more</a>
+            <button type="submit" class="btn btn-success btn-md btn-rounded mx-0" style="cursor: pointer">Save</button>
+            </form>
             </a>
-            <a class="btn btn-danger btn-md btn-rounded mx-0" style="cursor: pointer;" target="_blank"
-                href="<%=data.url%>">Debate
-            </a>
-
         </div>
         <!-- Grid column -->
 
