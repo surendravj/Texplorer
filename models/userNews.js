@@ -3,29 +3,29 @@ const schema = mongoose.Schema
 
 const newsSchema = schema({
     user: {
-        type: Schema.types.ObjectId,
+        type: schema.Types.ObjectId,
         ref: "userData"
     },
     userNews: [
         {
             urlToImage: {
                 type: String,
-                required
+                required: true
             },
             url: {
                 type: String,
-                required
+                required: true
             },
             author: {
                 type: String,
             },
             title: {
                 type: String,
-                required
+                required: true
             },
             description: {
                 type: String,
-                required
+                required: true
             }
         }
     ]

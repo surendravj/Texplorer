@@ -7,7 +7,6 @@
         <li class="breadcrumb-item active"><a href="/user/categeroy/Science">Science</a></li>
         <li class="breadcrumb-item active"><a href="/user/categeroy/Sports">Sports</a></li>
         <li class="breadcrumb-item"><a href="/user/categeroy/technology">Technology</a></li>
-        <li class="breadcrumb-item"><a href="/user">Headlines</a></li>
     </ol>
 </div>
 <br>
@@ -30,7 +29,7 @@
             <!-- Excerpt -->
             <p><%=data.description%></p>
             <!-- Post data -->
-            <%if(data.author==null){%>
+            <%if(data.author==null||data.author==''){%>
             <p>by <a><strong>Unknown</strong></a></p>
             <%}else{%>
             <p>by <a><strong><%=data.author%></strong></a></p>

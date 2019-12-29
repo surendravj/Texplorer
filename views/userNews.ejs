@@ -1,0 +1,50 @@
+<%-include('layouts/navbar.ejs')-%>
+<%if(isNewsThere){%>
+<div class="container text-center">
+    <p class="display-3">Oops!</p>
+    <p class="grey-text display-4"><%=error%></p>
+    <p class="text-muted">In Your News-Bucket</p>
+    <div>
+        <%}else{%>
+        <div class="container">
+            <%newsData.userNews.forEach(data=>{%>
+            <div class="row">
+
+                <!-- Grid column -->
+                <div class="col-lg-5">
+
+                    <!-- Featured image -->
+                    <div class=" rounded z-depth-1 mb-lg-0">
+                        <img class="img-fluid" src="<%=data.urlToImage%>" alt="No-Image">
+                    </div>
+
+                </div>
+                <div class="col-lg-7">
+                    <!-- Post title -->
+                    <h4 class="font-weight-bold mb-3"><strong><%=data.title%></strong></h4>
+                    <!-- Excerpt -->
+                    <p><%=data.description%></p>
+                    <!-- Post data -->
+                    <%if(data.author==null||data.author==''){%>
+                    <p>by <a><strong>Unknown</strong></a></p>
+                    <%}else{%>
+                    <p>by <a><strong><%=data.author%></strong></a></p>
+                    <%}%>
+                    <form action="/user/news/<%=data.id%>" method="post">
+                    <a class="btn btn-success btn-md btn-rounded mx-0" style="cursor: pointer;" target="_blank"
+                        href="<%=data.url%>">Read
+                        more</a>
+                    <button type="submit" class="btn btn-danger btn-md btn-rounded mx-0"
+                        style="cursor: pointer">Remove</button>
+                    </form>
+                </div>
+                <!-- Grid column -->
+
+            </div>
+            <!-- Grid row -->
+
+            <hr class="my-5">
+            <%})%>
+        </div>
+        <%}%>
+        <%-include('layouts/footer.ejs')-%>

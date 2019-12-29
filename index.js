@@ -1,15 +1,10 @@
 const express = require('express');
 
 const bodyparser = require('body-parser');
-
 const session = require('express-session');
-
 const flash = require('connect-flash');
-
 const passport = require('passport')
-
 const port = process.env.port || 5000;
-
 const app = express();
 
 require('./Auth/Authiencation')(passport)
@@ -19,7 +14,8 @@ app.use(express.static(__dirname + '/public'));
 const homepage = require('./controllers/routes/homepage'),
     signup = require('./controllers/routes/signup.js'),
     signin = require('./controllers/routes/signin'),
-    user=require('./controllers/routes/private/user_home')
+    user=require('./controllers/routes/private/user_home'),
+    userNews=require('./controllers/routes/private/userNews')
 
 app.use(session({
     resave: true,
@@ -38,6 +34,7 @@ app.use(homepage);
 app.use(signup);
 app.use(signin);
 app.use(user);
+app.use(userNews);
 
 app.listen(port, () => {
     console.log(`Server is conncted at port ${port}`);
