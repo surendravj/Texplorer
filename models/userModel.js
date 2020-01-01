@@ -2,12 +2,14 @@ const mongoose = require('mongoose');
 const mongoUrl = require('../util/API').mongoUrl
 
 
-mongoose.connect(mongoUrl, { useNewUrlParser: true,useUnifiedTopology:true,useFindAndModify:true})
+mongoose.connect(mongoUrl, { useNewUrlParser: true,useUnifiedTopology:true,useFindAndModify:false})
             .then(console.log('Mongodb is connected'))
             .catch(err=>{console.log(err)});
 
 const schema = mongoose.Schema;
 
+
+// user schema for user basic info
 const newSchema =schema({
     fname: {
         type: String,

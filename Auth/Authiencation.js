@@ -4,6 +4,8 @@ const bcrypt = require('bcryptjs');
 
 const user = require('../models/userModel');
 
+
+// passport strategy for user authentication
 module.exports = (passport) => {
     passport.use(
         new LocalStrategy({

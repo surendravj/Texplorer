@@ -3,43 +3,46 @@ const router = express.Router()
 const news = require('../../../models/userNews')
 const { ensureAuthenticated } = require('../../../Auth/is_Authenticated')
 
-
-
 // @type=get 
 // @desc=Route to get the user to the news Group
 // @auth=private
 // @route=/user/save
 router.get('/user/save', ensureAuthenticated, (req, res) => {
-    var firstSave = true
     news.findOne({ user: req.user._id })
-        .then(userNews => {
-            if (userNews.userNews) {
-               firstSave = false
-                var renderdData = {
-                    name: (req.user.fname + " " + req.user.lname),
-                    newsData: userNews,
-                    isNewsThere: firstSave
+        .then(profile => {
+            if (profile) {
+                if (profile.userNews.length == 0) {
+                    renderedData = {
+                        isNewsThere: true,
+                        name: (req.user.fname + " " + req.user.lname)
+                    }
+                    res.render('userNews', renderedData)
                 }
-                console.log(firstSave)
-                res.render('userNews', renderdData)
-            } else {
-                req.flash('Error', 'Nothing to show')
-                var renderdData = {
-                    name: (req.user.fname + " " + req.user.lname),
-                    error: req.flash('Error'),
-                    isNewsThere:firstSave
+                else {
+                    renderedData = {
+                        isNewsThere: false,
+                        name: (req.user.fname + " " + req.user.lname),
+                        newsData: profile
+                    }
+                    res.render('userNews', renderedData)
                 }
-                console.log(firstSave)
-                res.render('userNews', renderdData)
             }
-        }).catch(err => { console.log(err) })
+            else {
+                renderedData = {
+                    isNewsThere: true,
+                    name: (req.user.fname + " " + req.user.lname)
+                }
+                res.render('userNews', renderedData)
+            }
+        })
+        .catch(() => { console.log(err) })
 })
 
 // @type=post 
 // @desc=Route to save the news for the user 
 // @auth=private
 // @route=/user/save
-router.post('/user/save', ensureAuthenticated, (req, res) => {
+router.post('/user/save', (req, res) => {
     var data = {
         user: req.user._id,
         userNews: [{
@@ -59,6 +62,8 @@ router.post('/user/save', ensureAuthenticated, (req, res) => {
             else {
                 news.findOneAndUpdate({ user: req.user._id },
                     { $push: { userNews: data.userNews[0] } })
+                    .then(() => { console.log('updated') })
+                    .catch(err => { console.log(err) })
             }
             res.redirect('/user/save')
         })
@@ -69,7 +74,7 @@ router.post('/user/save', ensureAuthenticated, (req, res) => {
 // @desc=Route to delete the news of the news 
 // @auth=private
 // @route=/user/save
-router.post('/user/news/:id', ensureAuthenticated, (req, res) => {
+router.post('/user/news/:id', (req, res) => {
     news.updateOne({
         user: req.user._id
     }, { $pull: { 'userNews': { '_id': req.params.id } } })

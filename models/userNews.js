@@ -1,6 +1,8 @@
 const mongoose = require('mongoose');
 const schema = mongoose.Schema
 
+
+// user schema for saved news
 const newsSchema = schema({
     user: {
         type: schema.Types.ObjectId,

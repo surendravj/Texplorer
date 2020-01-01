@@ -2,10 +2,11 @@
 <%if(isNewsThere){%>
 <div class="container text-center">
     <p class="display-3">Oops!</p>
-    <p class="grey-text display-4"><%=error%></p>
+    <p class="grey-text display-4">Nothing to show </p>
     <p class="text-muted">In Your News-Bucket</p>
     <div>
         <%}else{%>
+            <br>
         <div class="container">
             <%newsData.userNews.forEach(data=>{%>
             <div class="row">

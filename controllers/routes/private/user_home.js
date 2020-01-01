@@ -31,7 +31,7 @@ router.get('/user/logout', (req, res) => {
 })
 
 // @type=get 
-// @desc=Route to get the categorical the news for tthe user 
+// @desc=Route to get the categorical-news for tthe user 
 // @auth=private
 // @route=/user/categeroy/userOption {selectable}
 router.get('/user/categeroy/:userOption', ensureAuthenticated, (req, res) => {
