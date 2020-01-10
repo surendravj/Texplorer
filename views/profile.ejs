@@ -1,0 +1,160 @@
+<%-include('layouts/navbar.ejs')-%>
+<div class="container my-5 text-center">
+
+
+    <!-- Section heading -->
+    <h3 class="font-weight-bold text-center mb-3">Profile</h3>
+
+    <img class="card-img-100 rounded-circle" src="https://mdbootstrap.com/img/Photos/Avatars/img (8).jpg"
+        alt="Generic placeholder image">
+
+    <div class="media mb-3 mt-3">
+        <div class="media-body">
+            <a>
+                <h5 class="user-name font-weight-bold"><%=name%></h5>
+            </a>
+        </div>
+    </div>
+</div>
+<div class="container text-center">
+    <div class="row">
+        <div class="col mb-3">Fname</div>
+        <div class="col"><%=fname%></div>
+        <div class="col">
+            <button type="button" data-toggle="modal" data-target="#modalLoginFormfname"
+                style="background-color: transparent;border: none;"><i class="fas fa-pencil-alt blue-text"></i></button>
+        </div>
+    </div>
+    <div class="row mb-3">
+        <div class="col">Lname</div>
+        <div class="col"><%=lname%></div>
+        <div class="col">
+            <button type="button" data-toggle="modal" data-target="#modalLoginFormlname"
+                style="background-color: transparent;border: none;"><i class="fas fa-pencil-alt blue-text"></i></button>
+        </div>
+    </div>
+    <div class="row mb-3">
+        <div class="col">Email</div>
+        <div class="col "><%=email%></div>
+        <div class="col">
+            <button type="submit" style="background-color: transparent;border: none;"><i
+                    class="fas fa-at blue-text"></i></button>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">Password</div>
+        <div class="col ">*********</div>
+        <div class="col">
+            <button type="submit" data-toggle="modal" data-target="#modalLoginFormpassword"
+                style="background-color: transparent;border: none;"><i class="fas fa-pencil-alt blue-text"></i></button>
+        </div>
+    </div>
+</div>
+
+
+<!-- model forms section -->
+
+<!-- Modal for fname -->
+<div class="modal fade" id="modalLoginFormfname" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <form action="" method="post">
+                <div class="modal-header text-center">
+                    <h4 class="modal-title w-100 font-weight-bold">Change FirstName</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body mx-3">
+                    <div class="md-form mb-5">
+                        <i class="fas fa-user-edit prefix grey-text"></i>
+                        <input type="text" name="newName" id="defaultForm-email" class="form-control validate">
+                        <label data-error="wrong" data-success="right" for="defaultForm-email">New Name</label>
+                    </div>
+
+                    <div class="md-form mb-4">
+                        <i class="fas fa-lock prefix grey-text"></i>
+                        <input type="password" name="password" id="defaultForm-pass" class="form-control validate">
+                        <label data-error="wrong" data-success="right" for="defaultForm-pass">Your password</label>
+                    </div>
+
+                </div>
+                <div class="modal-footer d-flex justify-content-center">
+                    <button class="btn btn-default" type="submit">save</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+<!-- Modal for lname -->
+<div class="modal fade" id="modalLoginFormlname" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <form action="" method="post">
+                <div class="modal-header text-center">
+                    <h4 class="modal-title w-100 font-weight-bold">Change LastName</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body mx-3">
+                    <div class="md-form mb-5">
+                        <i class="fas fa-user-edit prefix grey-text"></i>
+                        <input name="newName" type="text" id="defaultForm-email" class="form-control validate">
+                        <label data-error="wrong" data-success="right" for="defaultForm-email">New Name</label>
+                    </div>
+
+                    <div class="md-form mb-4">
+                        <i class="fas fa-lock prefix grey-text"></i>
+                        <input name="password" type="password" id="defaultForm-pass" class="form-control validate">
+                        <label data-error="wrong" data-success="right" for="defaultForm-pass">Your password</label>
+                    </div>
+
+                </div>
+                <div class="modal-footer d-flex justify-content-center">
+                    <button class="btn btn-default" type="submit">Save</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+<!-- model for password -->
+<div class="modal fade" id="modalLoginFormpassword" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <form action="" method="post">
+                <div class="modal-header text-center">
+                    <h4 class="modal-title w-100 font-weight-bold">Change Password</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body mx-3">
+                    <div class="md-form mb-5">
+                        <i class="fas fa-key prefix grey-text"></i>
+                        <input name="oldPassword" type="password"  class="form-control">
+                        <label data-error="wrong" data-success="right" for="defaultForm-email">Old Password</label>
+                    </div>
+
+                    <div class="md-form mb-4">
+                        <i class="fas fa-lock prefix grey-text"></i>
+                        <input name="newPassword" type="password" class="form-control">
+                        <label for="defaultForm-pass">New Password</label>
+                    </div>
+
+                </div>
+                <div class="modal-footer d-flex justify-content-center">
+                    <button class="btn btn-default">Save</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<%-include('layouts/footer.ejs')-%>

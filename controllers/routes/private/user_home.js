@@ -14,7 +14,8 @@ router.get('/user', ensureAuthenticated, (req, res) => {
         var data = JSON.parse(body)
         renderData = {
             name: (req.user.fname + " " + req.user.lname),
-            newsData: data
+            newsData: data,
+            userId:req.user._id
         }
         res.render('user_home', renderData);
     })
@@ -41,7 +42,8 @@ router.get('/user/categeroy/:userOption', ensureAuthenticated, (req, res) => {
         var data = JSON.parse(body)
         renderData = {
             name: (req.user.fname + " " + req.user.lname),
-            newsData: data
+            newsData: data,
+            userId:req.user._id
         }
         res.render('user_home', renderData);
     })

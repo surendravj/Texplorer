@@ -1,4 +1,5 @@
 const express = require('express');
+const path = require('path')
 const bodyparser = require('body-parser');
 const session = require('express-session');
 const flash = require('connect-flash');
@@ -15,12 +16,15 @@ const homepage = require('./controllers/routes/homepage'),
     signin = require('./controllers/routes/signin'),
     user = require('./controllers/routes/private/user_home'),
     userNews = require('./controllers/routes/private/userNews'),
+    profile=require('./controllers/routes/private/profile');
 
-app.use(session({
-    resave: true,
-    secret: 'mysecreat',
-    saveUninitialized: true
-}))
+    app.use(session({
+        resave: true,
+        secret: 'mysecreat',
+        saveUninitialized: true
+    }))
+
+app.use('/static', express.static(path.join(__dirname, '/public')))
 
 app.use(passport.initialize());
 app.use(passport.session());
@@ -34,6 +38,7 @@ app.use(signup);
 app.use(signin);
 app.use(user);
 app.use(userNews);
+app.use(profile)
 
 app.get('*', (req, res) => {
     res.send("<h1>404 Not Found")

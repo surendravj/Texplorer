@@ -14,25 +14,28 @@ router.get('/user/save', ensureAuthenticated, (req, res) => {
                 if (profile.userNews.length == 0) {
                     renderedData = {
                         isNewsThere: true,
-                        name: (req.user.fname + " " + req.user.lname)
+                        name: (req.user.fname + " " + req.user.lname),
+                        userId: req.user._id
                     }
-                    res.render('userNews', renderedData)
+                    return res.render('userNews', renderedData)
                 }
                 else {
                     renderedData = {
                         isNewsThere: false,
                         name: (req.user.fname + " " + req.user.lname),
-                        newsData: profile
+                        newsData: profile,
+                        userId: req.user._id
                     }
-                    res.render('userNews', renderedData)
+                    return res.render('userNews', renderedData)
                 }
             }
             else {
                 renderedData = {
                     isNewsThere: true,
-                    name: (req.user.fname + " " + req.user.lname)
+                    name: (req.user.fname + " " + req.user.lname),
+                    userId: req.user._id
                 }
-                res.render('userNews', renderedData)
+                return res.render('userNews', renderedData)
             }
         })
         .catch(() => { console.log(err) })
@@ -57,15 +60,14 @@ router.post('/user/save', (req, res) => {
         .then(userNews => {
             if (!userNews) {
                 var newNews = new news(data)
-                newNews.save().then(() => console.log('Saved successfully'))
+                newNews.save()
             }
             else {
                 news.findOneAndUpdate({ user: req.user._id },
                     { $push: { userNews: data.userNews[0] } })
-                    .then(() => { console.log('updated') })
+                    .then(() => { return res.redirect('/user/save') })
                     .catch(err => { console.log(err) })
             }
-            res.redirect('/user/save')
         })
         .catch(err => { console.log('Error in fetching') })
 })
@@ -78,7 +80,7 @@ router.post('/user/news/:id', (req, res) => {
     news.updateOne({
         user: req.user._id
     }, { $pull: { 'userNews': { '_id': req.params.id } } })
-        .then(() => { res.redirect('/user/save') })
+        .then(() => { return res.redirect('/user/save') })
 })
 
 module.exports = router
