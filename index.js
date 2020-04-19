@@ -9,20 +9,20 @@ const app = express();
 
 require('./Auth/Authiencation')(passport)
 
-app.use(express.static(__dirname + '/publeic'));
+app.use(express.static(__dirname + '/public'));
 
 const homepage = require('./controllers/routes/homepage'),
     signup = require('./controllers/routes/signup.js'),
     signin = require('./controllers/routes/signin'),
     user = require('./controllers/routes/private/user_home'),
     userNews = require('./controllers/routes/private/userNews'),
-    profile=require('./controllers/routes/private/profile');
+    profile = require('./controllers/routes/private/profile');
 
-    app.use(session({
-        resave: true,
-        secret: 'mysecreat',
-        saveUninitialized: true
-    }))
+app.use(session({
+    resave: true,
+    secret: 'mysecreat',
+    saveUninitialized: true
+}))
 
 app.use('/static', express.static(path.join(__dirname, '/public')))
 
@@ -44,8 +44,9 @@ app.get('*', (req, res) => {
     res.send("<h1>404 Not Found")
 })
 
-app.listen(port, () => {
-    console.log(`Server is conncted at port ${port}`);
-});
-
+let port = process.env.PORT;
+if (port == null || port == "") {
+    port = 8000;
+}
+app.listen(port);
 

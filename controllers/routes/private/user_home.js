@@ -35,6 +35,7 @@ router.get('/user/logout', (req, res) => {
 // @desc=Route to get the categorical-news for tthe user 
 // @auth=private
 // @route=/user/categeroy/userOption {selectable}
+
 router.get('/user/categeroy/:userOption', ensureAuthenticated, (req, res) => {
     var categeory = req.params
     var url = 'https://newsapi.org/v2/top-headlines?country=in&pageSize=100&category=' + categeory.userOption + '&apiKey=7d9961d53894489fa386c4a9e3576a89'

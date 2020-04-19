@@ -37,15 +37,18 @@
           <div class="row align-items-center h-100">
             <!--Grid column-->
             <div class="col-md-6">
-              <h1 class="mb-4">Find the <span class="text-warning">best rated</span><br><span
+              <h1 class="mb-4">Find the <span class="text-warning">Best rated</span><br><span
                   class="cyan-text text-primary">News</span> for you.</h1>
-              <p class="mb-4 pb-2 dark-grey-text">Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Quibusdam vitae, culpa qui officia deserunt laborum fuga similique mollit id quos
-                aperiam proident non ut rerum debitis.</p>
+              <p class="mb-4 pb-2 dark-grey-text"><span class="text-warning" style="font-size:xx-large;">Te<span
+                    class="text-primary" style="font-size:xx-large;">X</span>plorer</span> is a informative platform
+                that allows the user to filter the news as they want and the user can also save the news for later
+                reference </p>
               <div class="button_div" style="margin-top: 40px;margin-bottom: 30px;">
                 <a class="btn btn-primary btn-rounded btn-md ml-md-0" href="#explore">Explore</a>
-                <a href="/login"><button type="button" class="btn btn-outline-dark btn-rounded btn-md">Login</button></a>
-                <a href="/signup"><button type="button" class="btn btn-outline-dark btn-rounded btn-md">Register</button></a>
+                <a href="/login"><button type="button"
+                    class="btn btn-warning btn-rounded btn-md ml-md-0 text-dark ">Login</button></a>
+                <a href="/signup"><button type="button" class="btn btn-primary btn-rounded btn-md ml-md-0">Sign
+                    up</button></a>
               </div>
             </div>
             <!--Grid column-->
@@ -77,8 +80,8 @@
         <!-- Section heading -->
         <h2 class="text-center font-weight-bold mb-4 pb-2">Why is it so great?</h2>
         <!-- Section description -->
-        <p class="text-center lead grey-text mx-auto mb-5">Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-          sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</p>
+        <p class="text-center lead grey-text mx-auto mb-5">We can save news for later reference and we can categorize
+          the news as per your interest and lot more features</p>
 
         <!-- Grid row -->
         <div class="row">
@@ -104,9 +107,12 @@
 
               <!-- Grid column -->
               <div class="col-xl-10 col-md-11 col-10">
-                <h5 class="font-weight-bold mb-3">Safety</h5>
-                <p class="grey-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit enim ad minima veniam,
-                  quis nostrum exercitationem ullam. Reprehenderit maiores aperiam assumenda deleniti hic.</p>
+                <h5 class="font-weight-bold mb-3">Fast</h5>
+                <p class="grey-text">
+                  <span class="text-warning" style="font-size:larger;">Te<span class="text-primary"
+                      style="font-size:larger;">X</span>plorer</span> presents the best and fast news to end users we
+                  are using the best API to present the news as fast as we can
+                </p>
               </div>
               <!-- Grid column -->
 
@@ -124,9 +130,10 @@
 
               <!-- Grid column -->
               <div class="col-xl-10 col-md-11 col-10">
-                <h5 class="font-weight-bold mb-3">Technology</h5>
-                <p class="grey-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit enim ad minima veniam,
-                  quis nostrum exercitationem ullam. Reprehenderit maiores aperiam assumenda deleniti hic.</p>
+                <h5 class="font-weight-bold mb-3">Latest</h5>
+                <p class="grey-text">  <span class="text-warning" style="font-size:larger;">Te<span class="text-primary"
+                  style="font-size:larger;">X</span>plorer</span> presents the best and fast news to end users we
+              are using the best API to present the news as fast as we can</p>
               </div>
               <!-- Grid column -->
 
@@ -144,9 +151,10 @@
 
               <!-- Grid column -->
               <div class="col-xl-10 col-md-11 col-10">
-                <h5 class="font-weight-bold mb-3">Finance</h5>
-                <p class="grey-text mb-0">Lorem ipsum dolor sit amet, consectetur adipisicing elit enim ad minima
-                  veniam, quis nostrum exercitationem ullam. Reprehenderit maiores aperiam assumenda deleniti hic.</p>
+                <h5 class="font-weight-bold mb-3">Trending</h5>
+                <p class="grey-text mb-0">  <span class="text-warning" style="font-size:larger;">Te<span class="text-primary"
+                  style="font-size:larger;">X</span>plorer</span> presents the best and fast news to end users we
+              are using the best API to present the news as fast as we can</p>
               </div>
               <!-- Grid column -->
 
@@ -167,20 +175,16 @@
   </div>
 
   <!-- section-3 for news section -->
-
-  <div class="container mt-5"  id="explore">
+  <hr>
+  <div class="container mt-5" id="explore">
 
 
     <!--Section: Content-->
     <section class="mx-md-5 dark-grey-text">
 
       <!-- Section heading -->
-      <h2 class="text-center font-weight-bold mb-4 pb-2">Recent posts</h2>
+      <h2 class="text-center font-weight-bold mb-4 pb-2" style="text-decoration:underline;">Top Headlines</h2>
       <!-- Section description -->
-      <p class="text-center mx-auto mb-5">Duis aute irure dolor in reprehenderit in voluptate velit
-        esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa
-        qui officia deserunt mollit anim id est laborum.</p>
-
       <%dataclip.articles.forEach(data=>{%>
       <div class="row">
 
@@ -202,10 +206,11 @@
           <%if(data.author==null){%>
           <p>by <a><strong>Unknown</strong></a></p>
           <%}else{%>
-            <p>by <a><strong><%=data.author%></strong></a></p>
+          <p>by <a><strong><%=data.author%></strong></a></p>
           <%}%>
           <!-- Read more button -->
-          <a class="btn btn-success btn-md btn-rounded mx-0" style="cursor: pointer;" target="_blank" href="<%=data.url%>">Read more</a>
+          <a class="btn btn-success btn-md btn-rounded mx-0" style="cursor: pointer;" target="_blank" href="<%=data.url%>">Read
+          more</a>
 
         </div>
         <!-- Grid column -->

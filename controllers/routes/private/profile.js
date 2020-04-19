@@ -27,10 +27,15 @@ isPasswordMatch = (password, hashedPassword) => {
     })
 }
 
-// @type=put 
+// @type=post 
 // @desc=Route to to update the user details
 // @auth=private
-// @route=/user/save
+// @route=/user/profile
+
+router.post('/user/profile/:id/edit',ensureAuthenticated,(req,res)=>{
+
+})
+
 
 
 module.exports = router
